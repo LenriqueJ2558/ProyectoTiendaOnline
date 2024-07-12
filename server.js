@@ -5,6 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 require( "dotenv").config();
 
+const mongoURI = "mongodb+srv://lenriquej2558:Ogs3iEnaEPAUvJN2@cluster0.bi2mfzw.mongodb.net/"
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -21,7 +22,7 @@ const db = require("./app/models");
 const Role = db.role;
 
 db.mongoose
-  .connect(process.env.mongoURI, {
+  .connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
