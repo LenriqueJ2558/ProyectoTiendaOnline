@@ -87,3 +87,33 @@ exports.createProduct = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+  exports.productFilters = async (req, res) => {
+    try {
+      let query = {};
+  
+      // Ejemplo de filtro por nombre
+      if (req.query.name) {
+        query.name = { $regex: new RegExp(req.query.name, 'i') }; // Búsqueda por nombre, case-insensitive
+      }
+  
+      // Ejemplo de filtro por categoría
+      if (req.query.category) {
+        query.category = req.query.category; // Búsqueda por categoría
+      }
+  
+      // Otros filtros pueden agregarse de manera similar
+  
+      // Ejecutar la búsqueda utilizando Mongoose
+      const products = await Product.find(query);
+  
+      // Responder con los productos encontrados en formato JSON
+      res.status(200).json(products);
+    } catch (error) {
+      // Manejar errores
+      console.error(error);
+      res.status(500).json({ message: 'Error al buscar productos' });
+    }
+  };
+  
+  

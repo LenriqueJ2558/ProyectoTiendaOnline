@@ -24,7 +24,7 @@ cloudinary.config({
   const parser = multer({ storage })
 
 router.post('/products',parser.fields([{ name: 'image', maxCount: 1 }]), productController.createProduct);
-router.get('/products', productController.getAllProducts);
+router.get('/products',productController.productFilters, productController.getAllProducts);
 router.get('/products/:id', productController.getProductById);
 router.put('/products/:id', parser.fields([{ name: 'image', maxCount: 1 }]),productController.updateProduct);
 router.delete('/products/:id', productController.deleteProduct);
