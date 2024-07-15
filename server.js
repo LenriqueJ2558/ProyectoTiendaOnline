@@ -3,6 +3,9 @@ const cors = require("cors");
 const cookieSession = require("cookie-session");
 const app = express();
 const PORT = process.env.PORT || 8080;
+const productRoutes = require('./app/routes/producto.routes');
+const categoryRouters=require ('./app/routes/category.routes')
+const discountRouters = require ('./app/routes/discount.routes')
 require( "dotenv").config();
 
 app.use(express.json());
@@ -40,7 +43,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
-
+app.use('/api', productRoutes,categoryRouters,discountRouters);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
