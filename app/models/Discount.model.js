@@ -15,7 +15,7 @@ const Discount = mongoose.model(
       discountType: {
         type: String,
         enum: ['percentage', 'fixed'],
-        required: true
+        required: false
       },
       amount: {
         type: Number,
