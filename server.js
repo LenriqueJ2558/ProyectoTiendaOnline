@@ -7,8 +7,15 @@ const productRoutes = require('./app/routes/producto.routes');
 const categoryRouters=require ('./app/routes/category.routes')
 const discountRouters = require ('./app/routes/discount.routes')
 const CheckoutRouters = require ('./app/routes/checkout.routes')
-require( "dotenv").config();
+const pay = require('./app/routes/paymen.routes')
+require('dotenv').config();
 
+const corsOptions = {
+  origin: '*', // Reemplaza esto con la URL de tu frontend
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -44,7 +51,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
-app.use('/api', productRoutes,categoryRouters,discountRouters,CheckoutRouters);
+app.use('/api', productRoutes,categoryRouters,discountRouters,CheckoutRouters,pay);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

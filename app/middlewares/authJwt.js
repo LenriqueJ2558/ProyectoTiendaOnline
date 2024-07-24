@@ -5,7 +5,15 @@ const User = db.user;
 const Role = db.role;
 
 verifyToken = (req, res, next) => {
-    let token = req.session.token;
+    // Obtener el token del encabezado Authorization
+    let token = req.headers["authorization"];
+    
+    // Verificar si el token comienza con "Bearer "
+    if (token && token.startsWith("Bearer ")) {
+        token = token.slice(7, token.length); // Eliminar "Bearer " del token
+    } else {
+        return res.status(403).send({ message: "No token provided!" });
+    }
 
     if (!token) {
         return res.status(403).send({ message: "No token provided!" });
@@ -19,6 +27,7 @@ verifyToken = (req, res, next) => {
         }
 
         try {
+            // Buscar el usuario por el ID del token
             const user = await User.findById(decoded.id);
             if (!user) {
                 return res.status(404).send({ message: "User not found!" });
