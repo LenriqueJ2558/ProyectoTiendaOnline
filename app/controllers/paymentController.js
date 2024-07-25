@@ -1,5 +1,7 @@
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY); 
+
+const CLAVESECRETA = process.env.stripeSecret
+const stripe = require("stripe")(CLAVESECRETA); 
 
 const Order  = require('../models/OrdenCompra.model');
 
