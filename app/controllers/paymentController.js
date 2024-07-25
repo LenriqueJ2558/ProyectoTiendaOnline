@@ -31,12 +31,11 @@ const payOrder = async (req, res) => {
     if (!order) {
       return res.status(404).json({ message: 'Orden no encontrada' });
     }
-     // Verifica si la orden está en estado 'pending'
+
     if (order.status !== 'pending') {
       return res.status(400).json({ message: 'La orden no está en estado pendiente' });
     }
 
-    // Verifica que todos los datos del producto estén completos
     const orderProducts = order.products.map((item) => {
       const product = item.product;
 
@@ -81,40 +80,12 @@ const payOrder = async (req, res) => {
       metadata: { orderId: order._id.toString() }
     });
 
-    res.status(201).json({ order, sessionId: session.id });
+    res.status(201).json({ sessionId: session.id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
-
-const confirmOrder = async (req, res) => {
-  try {
-    const { orderId } = req.body;
-
-    // Verificar si el usuario está autenticado (ejemplo usando JWT)
-    if (!req.user) {
-      return res.status(401).json({ message: 'Usuario no autenticado' });
-    }
-
-    // Encuentra y actualiza la orden
-    const order = await Order.findByIdAndUpdate(
-      orderId,
-      { status: 'paid' },
-      { new: true }
-    );
-
-    if (!order) {
-      return res.status(404).json({ message: 'Orden no encontrada' });
-    }
-
-    res.status(200).json({ message: 'Orden confirmada', order });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error al confirmar la orden' });
-  }
-};
-
 
 const getMyOrders = async (req, res) => {
   try {
