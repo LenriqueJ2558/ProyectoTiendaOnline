@@ -1,3 +1,4 @@
+console.log('Stripe Secret Key:', process.env.stripeSecret);
 const stripe = require("stripe")(process.env.stripeSecret); 
 
 const Order  = require('../models/OrdenCompra.model');
