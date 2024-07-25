@@ -1,5 +1,4 @@
-console.log('Stripe Secret Key:', process.env.stripeSecret);
-const stripe = require("stripe")(process.env.stripeSecret); 
+const stripe = require("stripe")("sk_test_51PYHjy2KWHEWMpLQsYS971SbZqcKw040ioCecGPl4GC9907HFDsGXkhMQNjtJFNT2AYD0y6CAyOBFSqdrUpmo9yh00Oyf7ZOsX"); 
 
 const Order  = require('../models/OrdenCompra.model');
 
