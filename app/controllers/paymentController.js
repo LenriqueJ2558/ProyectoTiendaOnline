@@ -87,6 +87,34 @@ const payOrder = async (req, res) => {
   }
 };
 
+const confirmOrder = async (req, res) => {
+  try {
+    const { orderId } = req.body;
+
+    // Verificar si el usuario está autenticado (ejemplo usando JWT)
+    if (!req.user) {
+      return res.status(401).json({ message: 'Usuario no autenticado' });
+    }
+
+    // Encuentra y actualiza la orden
+    const order = await Order.findByIdAndUpdate(
+      orderId,
+      { status: 'paid' },
+      { new: true }
+    );
+
+    if (!order) {
+      return res.status(404).json({ message: 'Orden no encontrada' });
+    }
+
+    res.status(200).json({ message: 'Orden confirmada', order });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al confirmar la orden' });
+  }
+};
+
+
 const getMyOrders = async (req, res) => {
   try {
     const userId = req.user._id;
