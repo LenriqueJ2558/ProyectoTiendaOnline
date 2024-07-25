@@ -31,6 +31,10 @@ const payOrder = async (req, res) => {
     if (!order) {
       return res.status(404).json({ message: 'Orden no encontrada' });
     }
+     // Verifica si la orden está en estado 'pending'
+    if (order.status !== 'pending') {
+      return res.status(400).json({ message: 'La orden no está en estado pendiente' });
+    }
 
     // Verifica que todos los datos del producto estén completos
     const orderProducts = order.products.map((item) => {
