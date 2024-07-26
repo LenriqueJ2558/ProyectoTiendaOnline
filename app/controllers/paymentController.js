@@ -115,7 +115,7 @@ const getMyOrders = async (req, res) => {
     const userId = req.user._id;
 
     // Encuentra todas las órdenes del usuario
-    const orders = await Order.find({ user: userId }).populate('products.product');
+    const orders = await Order.find({ user: userId , status: 'paid'}).populate('products.product');
 
     if (!orders.length) {
       return res.status(404).json({ message: 'No tienes compras realizadas' });
