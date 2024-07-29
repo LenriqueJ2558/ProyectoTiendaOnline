@@ -10,7 +10,7 @@ const checkout = async (req, res) => {
       if (!cartItems || cartItems.length === 0) {
         return res.status(400).json({ message: 'El carrito está vacío' });
       }
-  
+
       let total = 0;
       const orderProducts = [];
   
@@ -38,13 +38,21 @@ const checkout = async (req, res) => {
   
         total += finalPrice * item.quantity;
       }
-  
-      const order = new Order({
-        user: userId,
-        products: orderProducts,
-        total,
-        status: 'pending'
-      });
+      let order = await Order.findOne({ user: userId, status: 'pending' });
+
+      if (order) {
+        // Actualizar productos y total de la orden existente
+        order.products = orderProducts;
+        order.total = total;
+      } else {
+        // Crear una nueva orden de compra
+        order = new Order({
+          user: userId,
+          products: orderProducts,
+          total,
+          status: 'pending'
+        });
+      }
   
       await order.save();
   
