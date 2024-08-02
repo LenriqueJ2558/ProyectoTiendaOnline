@@ -25,6 +25,7 @@ verifyToken = (req, res, next) => {
                 message: "Unauthorized!",
             });
         }
+       
 
         try {
             // Buscar el usuario por el ID del token
@@ -33,6 +34,7 @@ verifyToken = (req, res, next) => {
                 return res.status(404).send({ message: "User not found!" });
             }
             req.user = user;
+            req.userId = user._id;
             next();
         } catch (error) {
             res.status(500).send({ message: "Unable to fetch user data." });
@@ -45,6 +47,9 @@ isModerator = (req, res, next) => {
         if (err) {
             res.status(500).send({ message: err });
             return;
+        }
+        if (!user) {
+            return res.status(404).send({ message: "User not found!" });
         }
 
         Role.find(
@@ -76,6 +81,9 @@ isAdmin = (req, res, next) => {
         if (err) {
             res.status(500).send({ message: err });
             return;
+        }
+        if (!user) {
+            return res.status(404).send({ message: "User not found!" });
         }
 
         Role.find(
