@@ -1,0 +1,767 @@
+{
+	"info": {
+		"_postman_id": "ae248733-f436-421a-9535-09266145dd59",
+		"name": "ProyectoA1622360",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31459583"
+	},
+	"item": [
+		{
+			"name": "RegistroUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"JenriqueL2\",\r\n    \"email\":\"JenriqueL255892gmail.com\",\r\n    \"password\":\"123456\",\r\n    \"roles\":[\"admin\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/auth/signup",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Luis Enrique\",\r\n    \"email\":\"LenriqueJ2558@gmail.com\",\r\n    \"password\":\"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/auth/signin",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearProducto",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjU2MjkzOSwiZXhwIjoxNzIyNjQ5MzM5fQ.rt_hw7pBp6XZYhOlCFNKLvBSrs2lbq6Ihrmg5nqsPj0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Television 72 pulgadas",
+							"type": "text"
+						},
+						{
+							"key": "descripcion",
+							"value": "Television de 72 pulgadas full hd",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Admin/Desktop/imagenes/png-transparent-television-set-aoc-international-smart-tv-led-backlit-lcd-led-tv-miscellaneous-television-display-advertising.png"
+						},
+						{
+							"key": "precio",
+							"value": "3400",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "6695584148eb45331e926ce5",
+							"type": "text"
+						},
+						{
+							"key": "discount",
+							"value": "669557bf48eb45331e926ce3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/products",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProductos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/products",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProductosbyId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/products/669559ec48eb45331e926cec",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"products",
+						"669559ec48eb45331e926cec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProductsByFilter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filterby\":\"descripcion\",\r\n    \"values\":\"42\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/products/filterBy",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"products",
+						"filterBy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActulizarProducto",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjU2MjkzOSwiZXhwIjoxNzIyNjQ5MzM5fQ.rt_hw7pBp6XZYhOlCFNKLvBSrs2lbq6Ihrmg5nqsPj0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Television 72 pulgadas",
+							"type": "text"
+						},
+						{
+							"key": "descripcion",
+							"value": "Television de 72 pulgadas full hd",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Admin/Desktop/imagenes/png-transparent-television-set-aoc-international-smart-tv-led-backlit-lcd-led-tv-miscellaneous-television-display-advertising.png"
+						},
+						{
+							"key": "precio",
+							"value": "2399",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "6695584148eb45331e926ce5",
+							"type": "text"
+						},
+						{
+							"key": "discount",
+							"value": "669557bf48eb45331e926ce3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/products/66ac39c41bf714834978fa90",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"products",
+						"66ac39c41bf714834978fa90"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeliminarProducto",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjU2MjkzOSwiZXhwIjoxNzIyNjQ5MzM5fQ.rt_hw7pBp6XZYhOlCFNKLvBSrs2lbq6Ihrmg5nqsPj0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Television 72 pulgadas",
+							"type": "text"
+						},
+						{
+							"key": "descripcion",
+							"value": "Television de 72 pulgadas full hd",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Admin/Desktop/imagenes/png-transparent-television-set-aoc-international-smart-tv-led-backlit-lcd-led-tv-miscellaneous-television-display-advertising.png"
+						},
+						{
+							"key": "precio",
+							"value": "2399",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "6695584148eb45331e926ce5",
+							"type": "text"
+						},
+						{
+							"key": "discount",
+							"value": "669557bf48eb45331e926ce3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/products/66ac3b2a74d7fac6d0d6fc51",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"products",
+						"66ac3b2a74d7fac6d0d6fc51"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCategorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/categories",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearCategoria",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjY5Mzg0OCwiZXhwIjoxNzIyNzgwMjQ4fQ.5uECexu90LJwAXMS6sqWpgGj8IwnoyELbpUNp4d__Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"telefonos\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/categories",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActulizarCategoria",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjY5Mzg0OCwiZXhwIjoxNzIyNzgwMjQ4fQ.5uECexu90LJwAXMS6sqWpgGj8IwnoyELbpUNp4d__Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Ropa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/categories/66ae40d144376e28b9db519e",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories",
+						"66ae40d144376e28b9db519e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarCategoria",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjY5Mzg0OCwiZXhwIjoxNzIyNzgwMjQ4fQ.5uECexu90LJwAXMS6sqWpgGj8IwnoyELbpUNp4d__Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/categories/66ae40d144376e28b9db519e",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories",
+						"66ae40d144376e28b9db519e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDescuentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/discounts/",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"discounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearDescuentos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjY5Mzg0OCwiZXhwIjoxNzIyNzgwMjQ4fQ.5uECexu90LJwAXMS6sqWpgGj8IwnoyELbpUNp4d__Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"SUMMER20\",\r\n    \"description\": \"Descuento de verano\",\r\n    \"discountType\": \"percentage\",\r\n    \"amount\": 20,\r\n    \"startDate\": \"2024-07-15\",\r\n     \"endDate\": \"2024-09-31\",\r\n    \"usageLimit\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/discounts",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"discounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DescuantosByid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/discounts/669557bf48eb45331e926ce3",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"discounts",
+						"669557bf48eb45331e926ce3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActulizarDescuento",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjY5Mzg0OCwiZXhwIjoxNzIyNzgwMjQ4fQ.5uECexu90LJwAXMS6sqWpgGj8IwnoyELbpUNp4d__Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"SUMMER40\",\r\n    \"description\": \"Descuento de verano\",\r\n    \"discountType\": \"percentage\",\r\n    \"amount\": 40,\r\n    \"startDate\": \"2024-07-15\",\r\n     \"endDate\": \"2024-09-31\",\r\n    \"usageLimit\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/discounts/66ae432dbc200d36b4e1b9dd",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"discounts",
+						"66ae432dbc200d36b4e1b9dd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarDescuento",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjY5Mzg0OCwiZXhwIjoxNzIyNzgwMjQ4fQ.5uECexu90LJwAXMS6sqWpgGj8IwnoyELbpUNp4d__Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/discounts/66ae432dbc200d36b4e1b9dd",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"discounts",
+						"66ae432dbc200d36b4e1b9dd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearUnaOrdendeCompra",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjY5Mzg0OCwiZXhwIjoxNzIyNzgwMjQ4fQ.5uECexu90LJwAXMS6sqWpgGj8IwnoyELbpUNp4d__Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cartItems\": [\r\n    {\r\n      \"productId\": \"66ac39c41bf714834978fa90\", \r\n      \"quantity\": 5\r\n    },\r\n    {\r\n      \"productId\": \"66969889c1aeae33e4c41cb9\", \r\n      \"quantity\": 8\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/checkout",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrdenesdeComprasPendientes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjY5Mzg0OCwiZXhwIjoxNzIyNzgwMjQ4fQ.5uECexu90LJwAXMS6sqWpgGj8IwnoyELbpUNp4d__Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/orders/pending",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"orders",
+						"pending"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrdenesdeCompraComprado",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY2MmI1MTE3NjZjYWY4ZGQ0Mzc2OCIsImlhdCI6MTcyMjY5Mzg0OCwiZXhwIjoxNzIyNzgwMjQ4fQ.5uECexu90LJwAXMS6sqWpgGj8IwnoyELbpUNp4d__Hc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://proyectotiendaonline.onrender.com/api/my-orders",
+					"protocol": "https",
+					"host": [
+						"proyectotiendaonline",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"my-orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
